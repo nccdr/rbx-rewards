@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Earn Robux</h4>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h3>Available Offers</h3>
+        <p class="text-muted">
+            Complete the offers below to earn <i class="fa fa-diamond"></i>'s. These can be <a href="/redeem">redeemed</a> on the redeem page for Robux. Please note that we are not associated with any offers, and completion is decided by the offer provider. Make sure you are completing the correct offer and not an advertisement. Do not give out any sensitive information. Note that the offers we show you are based on the device you are accessing from, you may see more/different offers from a mobile device.
+        </p>
+    </div>
+    <!--
+        <div class="row hidden-sm">
+            <div class="col-lg-3 col-lg-offset-1">
+                <div class="    card-box tilebox-two tilebox-success">
+                    <i class="mdi mdi-currency-usd pull-right text-dark"></i>
+                    <h6 class="text-success text-uppercase m-b-15 m-t-10">Robux Redeemed</h6>
+                    <h2 class="m-b-10">R$ <span data-plugin="counterup">0</span></h2>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card-box tilebox-two tilebox-info">
+                    <i class="fa fa-diamond pull-right text-dark"></i>
+                    <h6 class="text-info text-uppercase m-b-15 m-t-10">Gems Earned</h6>
+                    <h2 class="m-b-10"><span data-plugin="counterup">0</span></h2>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card-box tilebox-two tilebox-primary">
+                    <i class="mdi mdi-check-circle-outline pull-right text-dark"></i>
+                    <h6 class="text-primary text-uppercase m-b-15 m-t-10">Offers Completed</h6>
+                    <h2 class="m-b-10"><span data-plugin="counterup">0</span></h2>
+                </div>
+            </div>
+        </div> !-->
+        <% if(in_group) { %>
+        <div class="row">
+        <% offers.forEach(function(offer) { %>
+        <div class="col-md-4">
+            <div class="text-center card-box">
+                <div class="member-card">
+                    <div class="thumb-xl member-thumb m-b-10 center-block">
+                        <img alt="profile-image" style="max-height: 100px;" src="<%- offer.picture %>">
+                    </div>
+                    <div class="">
+                        <h4 class="m-b-5"><%- offer.name %></h4>
+                        <p style="truncate"><i class="fa fa-diamond"></i> <%- offer.payout %></p>
+                    </div>
+                    <p class="text-muted font-13 truncate"><%- offer.description %></p>
+                    <a href="/offers/redirect/<%- offer.offerid %>" target="_blank"><button class="btn btn-info waves-effect btn-bordered waves-light m-b-5"> <i class="fa fa-external-link m-r-5"></i> <span>Go To Offer</span> </button></a>
+                </div>
+            </div>
+        </div>         
+        <%  }); %>
+        </div>
+        <% } else { %>
+            <div class="text-center" style="margin-top: 75px;">
+                <h3 class="font-600">You are not a member in our Group!</h3>
+                <p class="text-muted">This lets us payout your Robux instantly upon completion of an offer.</p>
+                <div id="join-group-div">
+                    <a href="<%= groupUrl %>" target="_blank"><button type="button" id="join-group-button" class="btn btn-inverse btn-bordered waves-effect w-md waves-light m-b-5"><i class="fa fa-external-link"></i> Join The Group</button></a>
+                </div>
+            </div>
+        <% } %>       
+    </div>
+</div>

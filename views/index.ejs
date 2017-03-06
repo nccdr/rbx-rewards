@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Home</h4>
+            </div>
+        </div>
+    </div>
+    <h1 class="logo center">Exchange Rewards</h1>
+    <h5 class="text-muted center">Earn Robux without having to pay a penny, no Builders Club required.</h5>
+    <div class="row biginfo">
+        <div class="col-md-2 col-md-offset-3">
+            <i class="fa fa-user-plus fa-5x"></i>
+            <h4 class="bigicon">Step 1</h4>
+            <h3>Register</h3>
+            <p class="text-muted">Register and connect your Roblox account quickly and start earning in minutes.</p>
+        </div>
+        <div class="col-md-2">
+            <i class="fa fa-cogs fa-5x"></i>
+            <h4 class="bigicon">Step 2</h4>
+            <h3>Complete Offers</h3>
+            <p class="text-muted">Complete offers on the Earn page and instantly earn Gems, which can be redeemed for Robux.</p>
+        </div>
+        <div class="col-md-2">
+            <i class="fa fa-shopping-basket fa-5x"></i>
+            <h4 class="bigicon">Step 3</h4>
+            <h3>Redeem Robux</h3>
+            <p class="text-muted">Redeem Robux on the Redeem page to recieve Robux. Robux will be transfered to your account via group transfer as soon as you redeem.</p>
+        </div>
+    </div>
+    <div class="center" style="margin-top: 50px;">
+    <% if(typeof authenticated == "undefined" || !authenticated) { %>
+        <form class="form-inline" role="form" method="POST" action="/user/auth">
+            <div class="form-group">
+                <label class="sr-only" for="r_username">Roblox Username</label> <input name="username" class="form-control" id="r_username" placeholder="Roblox Username" type="text">
+            </div>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+            <div class="form-group m-l-10">
+            </div><button class="btn btn-inverse waves-effect waves-light m-l-10 btn-md" type="submit">Login</button>
+        </form>  
+    <% } else { %>
+    <button onclick="window.location.href = '/offers'" class="btn btn-lg btn-inverse waves-effect waves-light m-b-5">  <i class="fa fa-money m-l-5"></i> <span>Start Earning</span></button>
+    <% } %>
+    </div>
+    </div>
+    <footer class="footer text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    © 2017. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

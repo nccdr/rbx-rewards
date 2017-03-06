@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exchange Rewards</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+
+	<!--STYLES-->
+	<link rel="stylesheet" href="/styles/animate.css">
+	<link rel="stylesheet" href="/styles/bootstrap.min.css">
+	<link rel="stylesheet" href="/styles/components.css">
+	<link rel="stylesheet" href="/styles/core.css">
+	<link rel="stylesheet" href="/styles/custom.css">
+	<link rel="stylesheet" href="/styles/icons.css">
+	<link rel="stylesheet" href="/styles/importer.css">
+	<link rel="stylesheet" href="/styles/menu.css">
+	<link rel="stylesheet" href="/styles/pages.css">
+	<link rel="stylesheet" href="/styles/responsive.css">
+	<link rel="stylesheet" href="/styles/swa.css">
+	<link rel="stylesheet" href="/styles/toastr.min.css">
+	<link rel="stylesheet" href="/styles/tooltipster.bundle.min.css">
+	<!--STYLES END-->
+</head>
+<body>
+	<header id="topnav">
+		<div class="topbar-main">
+			<div class="container">
+				<div class="logo">
+					<a class="logo" href="/">Exchange Rewards</a>
+				</div>
+				<div class="menu-extras">
+					<ul class="nav navbar-nav navbar-right pull-right">
+						<% if(typeof authenticated != 'undefined' && authenticated) { %>
+					<div class="menu-extras">
+						<ul class="nav navbar-nav navbar-right pull-right">
+							<li class="navbar-c-items">
+                                <form onsubmit="return 0;" class="navbar-left app-search pull-left hidden-xs">
+                                     <h5 style="color: rgba(255, 255, 255, 0.86);margin-right: 15px;" class=""><i class="fa fa-diamond"></i>  <span class="counter user-balance"><%- user.balance %></span></h5>
+                                </form>
+                            </li>
+							<li class="dropdown navbar-c-items notifs-list" style="display:none;">
+								<a aria-expanded="true" class="right-menu-item dropdown-toggle" data-toggle="dropdown" href="#"><i class="mdi mdi-bell notif-count-icon"></i> <span class="badge up bg-success notif-count"></span></a>
+								<ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right dropdown-lg user-list notify-list notifs-list-ul">
+									<li class="text-center notifs-title">
+										<h5>Notifications</h5>
+									</li>
+									<li style="display:none" id="notif-template">
+										<a class="user-list-item" href="#">
+										<div class="icon icon-bg">
+											<i id="notif-icon"></i>
+										</div>
+										<div class="user-desc">
+											<span class="name"></span> <span class="time"></span>
+										</div></a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown navbar-c-items">
+								<a aria-expanded="true" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" href="#"><img alt="user-img" class="img-circle" src="<%- image %>"></a>
+								<ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+									<li class="text-center">
+										<h5>Hi, <%- user.username %></h5>
+									</li>
+									<li class="text-center">
+										<h5>Balance: <i class="fa fa-diamond"></i>  <%- user.balance %></h5>
+									</li>
+									<li>
+										<a href="/user/logout"><i class="ti-power-off m-r-5"></i> Logout</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="menu-item">
+							<!-- Mobile menu toggle-->
+							<a class="navbar-toggle">
+							<div class="lines">
+								<span></span> <span></span> <span></span>
+							</div></a> <!-- End mobile menu toggle-->
+						</div>
+					</div>
+						<% } %>
+						<li style="list-style: none; display: inline">
+							<ul></ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="navbar-custom">
+			<div class="container">
+				<div id="navigation">
+					<ul class="navigation-menu">
+						<li>
+							<a href="/"><i class="mdi mdi-home"></i>Home</a>
+						</li>
+						<li>
+							<a href="/offers"><i class="mdi mdi-plus-circle"></i>Earn</a>
+						</li>
+						<li>
+							<a href="/redeem"><i class="mdi mdi-coin"></i>Redeem</a>
+						</li>
+						<li>
+							<a href="/support"><i class="mdi mdi-help-circle"></i>Support</a>
+						</li>
+            <li>
+							<a href="https://rbx.exchange/"><i class="mdi mdi-square-inc-cash"></i>Exchange</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="wrapper">
+		<%- body %>
+	</div>
+
+	<!--TEMPLATES-->
+	
+	<!--TEMPLATES END-->
+
+	<!--SCRIPTS-->
+	<script src="/js/dependencies/sails.io.js"></script>
+	<script src="/js/dependencies/jquery.min.js"></script>
+	<script src="/js/plugins/bootstrap.min.js"></script>
+	<script src="/js/plugins/detect.js"></script>
+	<script src="/js/plugins/fastclick.js"></script>
+	<script src="/js/plugins/jquery.app.js"></script>
+	<script src="/js/plugins/jquery.blockUI.js"></script>
+	<script src="/js/plugins/jquery.counterup.min.js"></script>
+	<script src="/js/plugins/jquery.scrollTo.min.js"></script>
+	<script src="/js/plugins/jquery.validate.min.js"></script>
+	<script src="/js/plugins/modernizr.min.js"></script>
+	<script src="/js/plugins/toastr.min.js"></script>
+	<script src="/js/plugins/tooltipster.bundle.min.js"></script>
+	<script src="/js/plugins/waves.js"></script>
+	<script src="/js/plugins/waypoint.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/jquery.core.js"></script>
+	<script src="/js/swa.js"></script>
+	<!--SCRIPTS END-->
+
+	<% if(typeof toastr != 'undefined') { %>
+	<script>toastr["<%= toastr.type %>"]("<%= toastr.msg %>");</script>
+	<% } %>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91194908-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
